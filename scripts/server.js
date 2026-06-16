@@ -1,5 +1,15 @@
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
 
 const pool = mysql.createPool({
     host: process.env.TIDB_HOST,
@@ -12,45 +22,25 @@ const pool = mysql.createPool({
     }
 });
 
-module.exports = pool;
-const cors = require('cors');
-const multer = require('multer');
-const path = require('path');
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(cors());
-app.use(express.json());
-
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-
-const armazenamento = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, '../uploads'));
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'aumigos',
+        format: async (req, file) => 'png', 
+        public_id: (req, file) => Date.now().toString(),
     },
-    filename: function (req, file, cb) {
-        const extensao = path.extname(file.originalname);
-        cb(null, Date.now() + extensao); 
-    }
 });
 
-const upload = multer({ storage: armazenamento });
-
-const conexao = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456', 
-    database: 'aumigo_aqui' 
-});
-
-conexao.connect((erro) => {
-    if (erro) console.error('Erro ao conectar ao MySQL:', erro);
-    else console.log('Conectado ao banco de dados MySQL com sucesso!');
-});
+const upload = multer({ storage: storage });
 
 app.get('/api/caes', (req, res) => {
-    conexao.query('SELECT * FROM caes', (erro, resultados) => {
+    pool.query('SELECT * FROM caes', (erro, resultados) => {
         if (erro) res.status(500).json({ erro: 'Erro ao buscar cães' });
         else res.json(resultados);
     });
@@ -58,6 +48,8 @@ app.get('/api/caes', (req, res) => {
 
 app.post('/api/caes', upload.single('imagem'), (req, res) => {
     const dados = req.body;
+    
+    const caminhoImagem = req.file ? req.file.path : '';
     
     const idade = Number(dados.idade);
     let faseCalculada = 'Adulto';
@@ -70,8 +62,6 @@ app.post('/api/caes', upload.single('imagem'), (req, res) => {
         faseCalculada = 'Idoso';
     }
 
-    const caminhoImagem = req.file ? `http://localhost:3000/uploads/${req.file.filename}` : '';
-
     const query = `INSERT INTO caes 
         (nome, porte, idade, fase, castrado, vacinado, raca, sexo, cidade, estado, descricao, imagem, adotado, dono, telefone, email) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
@@ -83,17 +73,17 @@ app.post('/api/caes', upload.single('imagem'), (req, res) => {
         0, dados.dono, dados.telefone, dados.email
     ];
 
-    conexao.query(query, valores, (erro, resultados) => {
+    pool.query(query, valores, (erro, resultados) => {
         if (erro) {
-            console.error(erro);
-            res.status(500).json({ erro: 'Erro ao salvar no banco de dados.' });
+            console.error('Erro ao cadastrar:', erro);
+            res.status(500).json({ erro: 'Erro ao salvar na base de dados.' });
         } else {
             res.status(201).json({ mensagem: 'Cão cadastrado com sucesso!' });
         }
     });
 });
 
-app.put('/api/caes/:id', (req, res) =>{
+app.put('/api/caes/:id', (req, res) => {
     const id = req.params.id;
     const dados = req.body;
 
@@ -118,12 +108,12 @@ app.put('/api/caes/:id', (req, res) =>{
         dados.descricao, adotadoSQL, id
     ];
 
-    conexao.query(query, valores, (erro, resultados) => {
-        if(erro){
+    pool.query(query, valores, (erro, resultados) => {
+        if (erro) {
             console.error('Erro ao atualizar:', erro);
-            res.status(500).json({erro: 'Erro ao atualizar o banco de dados'});
-        } else{
-            res.json({mensagem: 'Aumigo updated!'});
+            res.status(500).json({ erro: 'Erro ao atualizar a base de dados' });
+        } else {
+            res.json({ mensagem: 'Aumigo atualizado com sucesso!' });
         } 
     });
 });
@@ -133,16 +123,16 @@ app.delete('/api/caes/:id', (req, res) => {
 
     const query = 'DELETE FROM caes WHERE id = ?';
 
-    conexao.query(query, [id], (erro, resultados) => {
+    pool.query(query, [id], (erro, resultados) => {
         if (erro) {
             console.error('Erro ao deletar:', erro);
-            res.status(500).json({ erro: 'Erro ao deletar no banco de dados' });
+            res.status(500).json({ erro: 'Erro ao deletar na base de dados' });
         } else {
-            res.json({ mensagem: 'Post de Aumigo deletado com sucesso.' });
+            res.json({ mensagem: 'Post do Aumigo apagado.' });
         }
     });
 });
 
-app.listen(porta, () => {
-    console.log(`Servidor rodando na porta http://localhost:${porta}`);
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
