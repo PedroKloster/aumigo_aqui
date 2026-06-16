@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumigo Aqui - Quero Adotar</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo Aumigo Aqui">
+            <h1>Aumigo Aqui</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="ativo">Quero Adotar</a>
+            <a href="cadastrar.html">Cadastrar Cão</a>
+            <a href="editar.html">Meus Aumigos</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <div class="aviso">
+            <strong>Aviso:</strong> Este é um projeto com fins acadêmicos. Nenhum dos cachorros registrados estão para adoção e os contatos cadastrados são apenas ilustrativos.
+        </div>
+        
+        <h2>Conheça e adote nossos aumigos!</h2>
+
+        <section class="filtros-container">
+            <div class="filtro-grupo">
+                <label for="filtro-porte">Porte:</label>
+                <select id="filtro-porte">
+                    <option value="Todos">Todos</option>
+                    <option value="Pequeno Porte">Pequeno Porte</option>
+                    <option value="Médio Porte">Médio Porte</option>
+                    <option value="Grande Porte">Grande Porte</option>
+                </select>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-fase">Idade:</label>
+                <select id="filtro-fase">
+                    <option value="Todos">Todos</option>
+                    <option value="Filhote">Filhote</option>
+                    <option value="Adulto">Adulto</option>
+                    <option value="Idoso">Idoso</option>
+                </select>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-castrado">Castração:</label>
+                <select id="filtro-castrado">
+                    <option value="Todos">Todos</option>
+                    <option value="Castrado">Castrado</option>
+                    <option value="Não castrado">Não castrado</option>
+                    <option value="Não informado">Não informado</option>
+                </select>
+            </div>
+
+            <div class="filtro-grupo">
+                <label for="filtro-vacinado">Vacinação:</label>
+                <select id="filtro-vacinado">
+                    <option value="Todos">Todos</option>
+                    <option value="Vacinado">Vacinado</option>
+                    <option value="Não vacinado">Não vacinado</option>
+                    <option value="Não informado">Não informado</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="galeria" id="galeria"></section>
+    </main>
+
+    <footer>
+        <p>Projeto desenvolvido por Pedro Augusto Marques Kloster, acadêmico de Engenharia de Computação da Universidade Estadual de Ponta Grossa, para a disciplina Desenvolvimento Web. Os cães registrados neste site não estão para adoção e os contatos cadastrados são fictícios, sendo apenas elementos para ilustração e demonstração da aplicação web.</p>
+    </footer>
+
+    <div id="janela-contato" class="janela">
+        <div class="janela-conteudo">
+            <span class="fechar-janela" id="fechar-janela">&times;</span>
+            <h2>Contato - <span id="janela-nome-cao"></span></h2>
+            <p><strong>Tutor:</strong> <span id="janela-dono"></span></p>
+            <p><strong>Telefone:</strong> <span id="janela-telefone"></span></p>
+            <p><strong>E-mail:</strong> <span id="janela-email"></span></p>
+        </div>
+    </div>
+
+    <div id="janela-raca" class="janela">
+        <div class="janela-conteudo">
+            <span class="fechar-janela" id="fechar-janela-raca">&times;</span>
+            <h2 id="raca-nome-titulo">Nome da Raça</h2>
+            
+            <div id="raca-mensagem" style="margin: 20px 0; font-size: 16px; text-align: center;">
+                Buscando dados na The Dog API...
+            </div>
+            
+            <div id="raca-conteudo" style="display: none; text-align: left; margin-top: 15px;">
+                <p><strong>Temperamento:</strong> <span id="raca-temperamento"></span></p>
+                <p><strong>Expectativa de Vida:</strong> <span id="raca-vida"></span></p>
+                <p><strong>Peso Médio:</strong> <span id="raca-peso"></span></p>
+                <p style="margin-top: 15px; font-size: 12px; color: #666;">* Dados fornecidos pela The Dog API e traduzidos automaticamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

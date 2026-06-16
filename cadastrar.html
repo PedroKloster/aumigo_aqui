@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumigo Aqui - Cadastrar Cão</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo Aumigo Aqui">
+            <h1>Aumigo Aqui</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Quero Adotar</a>
+            <a href="cadastrar.html" class="ativo">Cadastrar Cão</a>
+            <a href="editar.html">Meus Amigos</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="formulario-secao">
+            <h2>Cadastrar um Aumigo</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Preencha os dados abaixo para anunciar um cãozinho no nosso sistema.</p>
+            
+            <form id="form-cadastro" class="form-cadastro" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Dados do Cão</legend>
+                    
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="nome">Nome do Cachorro:</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Insira o nome do cão...">
+                        </div>
+                        <div class="form-grupo">
+                            <label for="sexo">Sexo:</label>
+                            <select id="sexo" name="sexo" required>
+                                <option value="">Selecione...</option>
+                                <option value="Macho">Macho</option>
+                                <option value="Fêmea">Fêmea</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="raca">Raça:</label>
+                            <select id="raca" name="raca" required>
+                                <option value="">Selecione...</option>
+                                <option value="Vira-lata">Vira-lata</option>
+                                <option value="Poodle">Poodle</option>
+                                <option value="Golden Retriever">Golden Retriever</option>
+                                <option value="Labrador">Labrador</option>
+                                <option value="Pinscher">Pinscher</option>
+                                <option value="Shih Tzu">Shih Tzu</option>
+                                <option value="Bulldog">Bulldog</option>
+                                <option value="Border Collie">Border Collie</option>
+                                <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+                                <option value="Spitz Alemão">Spitz Alemão</option>
+                                <option value="Lhasa Apso">Lhasa Apso</option>
+                                <option value="Dachshund">Dachshund</option>
+                                <option value="Pug">Pug</option>
+                                <option value="Maltês">Maltês</option>
+                                <option value="Pastor Alemão">Pastor Alemão</option>
+                                <option value="Pit Bull">Pit Bull</option>
+                                <option value="Rottweiler">Rottweiler</option>
+                                <option value="Bulldog Francês">Bulldog Francês</option>
+                                <option value="Beagle">Beagle</option>
+                                <option value="Chow Chow">Chow Chow</option>
+                                <option value="Boxer">Boxer</option>
+                                <option value="Husky Siberiano">Husky Siberiano</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="Cocker Spaniel">Cocker Spaniel</option>
+                                <option value="Terrier Brasileiro">Terrier Brasileiro</option>
+                                <option value="Outra">Outra</option>
+                            </select>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="porte">Porte:</label>
+                            <select id="porte" name="porte" name="porte" required>
+                                <option value="">Selecione...</option>
+                                <option value="Pequeno Porte">Pequeno Porte</option>
+                                <option value="Médio Porte">Médio Porte</option>
+                                <option value="Grande Porte">Grande Porte</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="castrado">Castração:</label>
+                            <select id="castrado" name="castrado" required>
+                                <option value="">Selecione...</option>
+                                <option value="Castrado">Castrado</option>
+                                <option value="Não castrado">Não castrado</option>
+                                <option value="Não informado">Não informado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="vacinado">Vacinação:</label>
+                            <select id="vacinado" name="vacinado" required>
+                                <option value="">Selecione...</option>
+                                <option value="Vacinado">Vacinado</option>
+                                <option value="Não vacinado">Não vacinado</option>
+                                <option value="Não informado">Não informado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="idade">Idade (em Anos):</label>
+                            <input type="number" id="idade" name="idade" required min="0" placeholder="Digite a idade do cão em anos...">
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="imagem">Foto do Cão (PNG ou JPEG):</label>
+                        <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg, image/jpg" required>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="descricao">Descrição / Personalidade:</label>
+                        <textarea id="descricao" rows="4" name="descricao" required placeholder="Conte um pouco sobre o cão, como foi encontrado, comportamento, personalidade..."></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Dados do Tutor</legend>
+                    <div class="form-grupo">
+                        <label for="dono">Seu Nome:</label>
+                        <input type="text" id="dono" name="dono" required placeholder="Insira o nome do tutor...">
+                    </div>
+                    
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="telefone">Telefone:</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="Ex: (XX)XXXXX-XXXX" pattern="[0-9]{10,11}" maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required placeholder="email@exemplo.com">
+                        </div>
+                    </div>
+
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" id="cidade" name="cidade" required placeholder="Escreva a cidade na qual o cão se encontra...">
+                        </div>
+                        <div class="form-grupo">
+                            <label for="estado">Estado (UF):</label>
+                            <select id="estado" name="estado" required>
+                                <option value="">Selecione...</option>
+                                <option value="AC">AC - Acre</option>
+                                <option value="AL">AL - Alagoas</option>
+                                <option value="AP">AP - Amapá</option>
+                                <option value="AM">AM - Amazonas</option>
+                                <option value="BA">BA - Bahia</option>
+                                <option value="CE">CE - Ceará</option>
+                                <option value="DF">DF - Distrito Federal</option>
+                                <option value="ES">ES - Espírito Santo</option>
+                                <option value="GO">GO - Goiás</option>
+                                <option value="MA">MA - Maranhão</option>
+                                <option value="MT">MT - Mato Grosso</option>
+                                <option value="MS">MS - Mato Grosso do Sul</option>
+                                <option value="MG">MG - Minas Gerais</option>
+                                <option value="PA">PA - Pará</option>
+                                <option value="PB">PB - Paraíba</option>
+                                <option value="PR">PR - Paraná</option>
+                                <option value="PE">PE - Pernambuco</option>
+                                <option value="PI">PI - Piauí</option>
+                                <option value="RJ">RJ - Rio de Janeiro</option>
+                                <option value="RN">RN - Rio Grande do Norte</option>
+                                <option value="RS">RS - Rio Grande do Sul</option>
+                                <option value="RO">RO - Rondônia</option>
+                                <option value="RR">RR - Roraima</option>
+                                <option value="SC">SC - Santa Catarina</option>
+                                <option value="SP">SP - São Paulo</option>
+                                <option value="SE">SE - Sergipe</option>
+                                <option value="TO">TO - Tocantins</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-submit">Cadastrar Cão</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="modal-alerta" class="modal-alerta">
+        <div class="modal-alerta-conteudo">
+            <h3 id="modal-alerta-titulo">Mensagem</h3>
+            <p id="modal-alerta-texto">Texto do alerta.</p>
+            
+            <div class="modal-alerta-botoes">
+                <button id="modal-alerta-btn" class="modal-alerta-btn">OK</button>
+                <button id="modal-alerta-btn-cancelar" class="modal-alerta-btn btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Projeto desenvolvido por Pedro Augusto Marques Kloster, acadêmico de Engenharia de Computação da Universidade Estadual de Ponta Grossa, para a disciplina Desenvolvimento Web. Os cães registrados neste site não estão para adoção e os contatos cadastrados são fictícios, sendo apenas elementos para ilustração e demonstração da aplicação web.</p>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

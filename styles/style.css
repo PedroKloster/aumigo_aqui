@@ -1,0 +1,460 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+header{
+    background-color: rgb(52, 197, 255);
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 5px gray;
+    border-radius: 0 0 20px 20px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img{
+    width: 50px;
+    height: 50px;
+}
+
+.nav-menu a{
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    transition: background-color 0.3s;
+    color: black;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.nav-menu a:hover{
+    background-color: white;
+}
+
+.aviso{
+    background-color: rgb(243, 179, 62);
+    color: black;
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+    width: 50%;
+    justify-self: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px gray;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.container h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filtros-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.filtro-grupo select {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid rgb(52, 197, 255);
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 1px 5px gray;
+    transition: all 0.3s;
+}
+
+.galeria{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card{
+    background-color: rgb(122, 209, 244);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px gray;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-conteudo{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-conteudo h3{
+    margin-bottom: 5px;
+}
+
+.info{
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.descricao{
+    font-size: 15px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.btn-contato{
+    background-color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.btn-contato:hover{
+    transform: translateY(-5px);
+}
+
+footer{
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.janela {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.625);
+    justify-content: center;
+    align-items: center;
+}
+
+.janela.ativo {
+    display: flex;
+}
+
+.janela-conteudo {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+}
+
+.janela-conteudo h2 {
+    color: rgb(52, 197, 255);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.janela-conteudo p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.fechar-janela {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    color: gray;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.fechar-janela:hover {
+    color: rgb(255, 42, 42);
+}
+
+
+.btn-contato:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.mensagem-vazio {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 20px;
+    color: gray;
+    padding: 50px 20px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 12px;
+    border: 2px dashed rgb(52, 197, 255);
+}
+
+.sobre-conteudo {
+    background-color: rgb(52, 197, 255);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 15px gray;
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.sobre-conteudo h2 {
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formulario-secao {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 15px gray;
+    margin-top: 50px;
+}
+
+fieldset {
+    border: 2px solid rgb(52, 197, 255);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+legend {
+    background-color: rgb(52, 197, 255);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-grupo label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: black;
+}
+
+.form-grupo input, .form-grupo select, .form-grupo textarea {
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+}
+
+.form-grupo input:focus, .form-grupo select:focus, .form-grupo textarea:focus {
+    border-color: rgb(52, 197, 255);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: rgb(52, 197, 255);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: rgb(52, 197, 255);
+}
+
+.nav-menu a.ativo {
+    background-color: white;
+    color: rgb(52, 197, 255);
+}
+
+.subtitulo-pagina {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#janela-editar .janela-conteudo {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-alerta {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-alerta.ativo {
+    display: flex; 
+}
+
+.modal-alerta-conteudo {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: aparecerModal 0.3s ease-out;
+}
+
+.modal-alerta-conteudo h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-alerta-btn {
+    background-color: rgb(52, 197, 255);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.modal-alerta-btn:hover {
+    background-color: rgb(30, 160, 220);
+}
+
+.modal-alerta-btn.erro {
+    background-color: #dc3545;
+}
+
+@keyframes aparecerModal {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-alerta-botoes {
+    margin-top: 20px;
+}
+
+.btn-cancelar {
+    background-color: #6c757d;
+    display: none;
+    margin-left: 10px;
+}
+
+.btn-cancelar:hover {
+    background-color: #5a6268;
+}
+
+#galeria-meus-anuncios .card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #e0e0e0;
+}
+
+#galeria-meus-anuncios .card h3,
+#galeria-meus-anuncios .card p {
+    color: #333333;
+}
+
+.btn-editar-custom {
+    background-color: rgb(52, 197, 255) !important;
+    color: #ffffff !important;
+    flex: 1;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-editar-custom:hover {
+    background-color: rgb(52, 197, 255) !important;
+}
+
+.raca-clicavel {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.raca-clicavel:hover {
+    color: #0056b3;
+}

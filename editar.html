@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumigo Aqui - Meus Aumigos</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo Aumigo Aqui">
+            <h1>Aumigo Aqui</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Quero Adotar</a>
+            <a href="cadastrar.html">Cadastrar Cão</a>
+            <a href="editar.html" class="ativo">Meus Aumigos</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Gerenciar Meus Aumigos</h2>
+        <p class="subtitulo-pagina">Aqui você pode editar as informações dos cães que você cadastrou ou marcá-los como adotados.</p>
+
+        <section class="galeria" id="galeria-meus-anuncios"></section>
+    </main>
+
+    <footer>
+        <p>Projeto desenvolvido por Pedro Augusto Marques Kloster, acadêmico de Engenharia de Computação da Universidade Estadual de Ponta Grossa, para a disciplina Desenvolvimento Web. Os cães registrados neste site não estão para adoção e os contatos cadastrados são fictícios, sendo apenas elementos para ilustração e demonstração da aplicação web.</p>
+    </footer>
+
+    <div id="janela-editar" class="janela">
+        <div class="janela-conteudo">
+            <button class="fechar-janela" id="fechar-editar">&times;</button>
+            <h2>Editar Dados do Cão</h2>
+            
+            <form id="form-editar" class="form-cadastro">
+                <input type="hidden" id="edit-id">
+                
+                <fieldset>
+                    <legend>Status de Adoção</legend>
+                    <div class="form-grupo">
+                        <label for="edit-adotado">O cão já foi adotado?</label>
+                        <select id="edit-adotado" required>
+                            <option value="false">Não, está disponível para adoção.</option>
+                            <option value="true">Sim, já foi adotado.</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Características do Cão</legend>
+                    
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="edit-nome">Nome do Cachorro:</label>
+                            <input type="text" id="edit-nome" required placeholder="Insira o nome do cão...">
+                        </div>
+                        <div class="form-grupo">
+                            <label for="edit-sexo">Sexo:</label>
+                            <select id="edit-sexo" required>
+                                <option value="Macho">Macho</option>
+                                <option value="Fêmea">Fêmea</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="edit-raca">Raça:</label>
+                            <select id="edit-raca" required>
+                                <option value="Vira-lata">Vira-lata</option>
+                                <option value="Poodle">Poodle</option>
+                                <option value="Golden Retriever">Golden Retriever</option>
+                                <option value="Labrador">Labrador</option>
+                                <option value="Pinscher">Pinscher</option>
+                                <option value="Shih Tzu">Shih Tzu</option>
+                                <option value="Bulldog">Bulldog</option>
+                                <option value="Border Collie">Border Collie</option>
+                                <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+                                <option value="Spitz Alemão">Spitz Alemão</option>
+                                <option value="Lhasa Apso">Lhasa Apso</option>
+                                <option value="Dachshund">Dachshund</option>
+                                <option value="Pug">Pug</option>
+                                <option value="Maltês">Maltês</option>
+                                <option value="Pastor Alemão">Pastor Alemão</option>
+                                <option value="Pit Bull">Pit Bull</option>
+                                <option value="Rottweiler">Rottweiler</option>
+                                <option value="Bulldog Francês">Bulldog Francês</option>
+                                <option value="Beagle">Beagle</option>
+                                <option value="Chow Chow">Chow Chow</option>
+                                <option value="Boxer">Boxer</option>
+                                <option value="Husky Siberiano">Husky Siberiano</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="Cocker Spaniel">Cocker Spaniel</option>
+                                <option value="Terrier Brasileiro">Terrier Brasileiro</option>
+                                <option value="Outra">Outra</option>
+                            </select>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="edit-porte">Porte:</label>
+                            <select id="edit-porte" required>
+                                <option value="Pequeno Porte">Pequeno Porte</option>
+                                <option value="Médio Porte">Médio Porte</option>
+                                <option value="Grande Porte">Grande Porte</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="edit-castrado">Castração:</label>
+                            <select id="edit-castrado" required>
+                                <option value="Castrado">Castrado</option>
+                                <option value="Não castrado">Não castrado</option>
+                                <option value="Não informado">Não informado</option>
+                            </select>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="edit-vacinado">Vacinação:</label>
+                            <select id="edit-vacinado" required>
+                                <option value="Vacinado">Vacinado</option>
+                                <option value="Não vacinado">Não vacinado</option>
+                                <option value="Não informado">Não informado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-linha">
+                        <div class="form-grupo">
+                            <label for="edit-idade">Idade (em Anos):</label>
+                            <input type="number" id="edit-idade" required min="0" placeholder="Digite a idade do cão em anos...">
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="edit-descricao">Descrição / Personalidade:</label>
+                        <textarea id="edit-descricao" rows="4" required></textarea>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-alerta" class="modal-alerta">
+        <div class="modal-alerta-conteudo">
+            <h3 id="modal-alerta-titulo">Mensagem</h3>
+            <p id="modal-alerta-texto">Texto do alerta.</p>
+            
+            <div class="modal-alerta-botoes">
+                <button id="modal-alerta-btn" class="modal-alerta-btn">OK</button>
+                <button id="modal-alerta-btn-cancelar" class="modal-alerta-btn btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+
+    
