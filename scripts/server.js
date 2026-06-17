@@ -8,6 +8,7 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const path = require('path');
 app.use(cors());
 app.use(express.json());
 
@@ -131,6 +132,12 @@ app.delete('/api/caes/:id', (req, res) => {
             res.json({ mensagem: 'Post do Aumigo apagado.' });
         }
     });
+});
+
+app.use(express.static(path.join(__dirname, '..')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 app.listen(PORT, () => {
