@@ -1,2 +1,2 @@
 # aumigo_aqui
-Projeto final da disciplina Desenvolvimento Web
+Projeto final da disciplina Desenvolvimento Web.
